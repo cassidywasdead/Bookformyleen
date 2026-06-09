@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architecture of Us - Ahrnav Sharma</title>
+    <style>
+        /* Importing Premium Aesthetic Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital@1&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0a0a0a; /* Deep dark background */
+            margin: 0;
+            font-family: 'Cinzel', serif;
+        }
+
+        .book-container {
+            perspective: 1200px; /* For the 3D effect */
+        }
+
+        .book-cover {
+            width: 340px;
+            height: 500px;
+            /* Matte Black / Charcoal Texture */
+            background: linear-gradient(135deg, #232323 0%, #111111 100%);
+            border-radius: 4px 14px 14px 4px; /* Spine vs Opening side */
+            /* Realistic Book Shadow */
+            box-shadow: inset 5px 0 12px rgba(0, 0, 0, 0.6), 
+                        inset -2px 0 4px rgba(255, 255, 255, 0.05), 
+                        20px 25px 35px rgba(0, 0, 0, 0.9);
+            position: relative;
+            padding: 20px;
+            box-sizing: border-box;
+            transform: rotateY(-15deg);
+            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+        }
+
+        /* Interactive Hover Effect */
+        .book-cover:hover {
+            transform: rotateY(0deg) scale(1.05);
+        }
+
+        /* The Aesthetic Golden Foil Border */
+        .golden-border {
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            left: 35px; /* Shifted right to leave space for the spine binding */
+            right: 20px;
+            border: 2px solid #d4af37; /* Metallic Gold */
+            outline: 1px solid #d4af37;
+            outline-offset: -8px;
+            background: transparent;
+            pointer-events: none;
+        }
+
+        /* Vintage Corner Ornaments */
+        .golden-border::before, .golden-border::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border: 2px solid #d4af37;
+        }
+
+        .golden-border::before {
+            top: -8px; left: -8px;
+            border-right: none; border-bottom: none;
+        }
+        
+        .golden-border::after {
+            bottom: -8px; right: -8px;
+            border-left: none; border-top: none;
+        }
+
+        .content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-left: 15px; /* Offset for spine */
+        }
+
+        /* Golden Embossed Title */
+        .title {
+            color: #d4af37;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: 3px;
+            /* 3D Emboss Effect */
+            text-shadow: 1px 1px 0px #8a6d20, 
+                         -1px -1px 0px #fce295,
+                         3px 3px 6px rgba(0,0,0,0.8);
+            margin-bottom: 25px;
+            z-index: 2;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin-bottom: 90px;
+        }
+
+        /* Minimalistic Classy Author Name */
+        .author {
+            position: absolute;
+            bottom: 50px;
+            color: #d4af37;
+            font-family: 'Playfair Display', serif; /* Gives a classic novel vibe */
+            font-style: italic;
+            font-size: 20px;
+            letter-spacing: 1.5px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* The Spine Hinge Detail */
+        .book-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 18px;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.5) 20%, transparent 100%);
+            border-radius: 4px 0 0 4px;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 3D Book Cover Implementation -->
+    <div class="book-container">
+        <div class="book-cover">
+            <div class="golden-border"></div>
+            <div class="content">
+                <div class="title">THE<br>ARCHITECTURE<br>OF US</div>
+                <div class="divider"></div>
+                <div class="author">Ahrnav Sharma</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
